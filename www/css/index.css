@@ -2,8 +2,12 @@
 .wrapper{
     max-width: 90vw;
 }
-
+div{
+    top: 50%;
+    left: 50%;
+}
 body{
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,3 +26,39 @@ h1{
     margin: auto;
     font-size: 6vh;
 }
+
+/*Button*/
+#gioca{
+    width: 45vh;
+    -webkit-clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 100%);
+    clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 54px),calc(100% - 30px) 100%,15px 100%,0 100%);
+}
+#classifica{
+    width: 45vh;
+    -webkit-clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 100%);
+    clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 54px),calc(100% - 30px) 100%,15px 100%,0 100%);
+}
+  body {
+    font-family: 'Press Start 2p';
+  }
+  .start-btn{
+      text-align: center;
+      display: inline-block;
+      margin:5px;
+      font-weight: bold;
+      padding: 10px 0 10px 10px ;
+      background-color: rgb(91, 146, 168);
+      color: rgb(250, 250, 250);
+      -webkit-border-radius: 7px;
+      -moz-border-radius: 7px;
+      -o-border-radius: 7px;
+      border-radius: 7px;
+      cursor: pointer;
+  
+  }
+   .start-btn:active {
+      box-shadow: none;
+      position: relative;
+      top: .2em;
+  }
+  /*--*/
