@@ -10,32 +10,68 @@
         
         <script  src="js/libreria.js"></script>
         <style>
+            table {
+                border-collapse: separate;
+                border-spacing: 0;
+              }
+              
+              th, td {
+                padding: 10px;
+                text-align: left;
+              }
+              
+              th {
+                background-color: #3F51B5;
+                color: white;
+              }
+              
+              tbody tr:nth-child(even) {
+                background-color: #81bbe4;
+              }
+              
+              tbody tr:nth-child(odd) {
+                background-color: #8da5b8;
+              }
+              
+              td {
+                border: 1px solid #3F51B5;
+                border-radius: 5px;
+              }
+            #font-face{
+                src:url("font/VT323-Regular.ttf");
+                font-family: "VT323";
+            }
+            
             td{
                 color: white;
+                font-family: monospace;
+                font-size: 18px;
             }
             th{
                 color: white;
+                font-family: monospace;
+                font-size: 18px;
             }
         </style>
     </head>
     <body style="background-image: url('images/bg_large.jpg');">
         
-        <div class="container">
-            <img src="images/logo.png"><img style="width:10vh"src="images/Crab.png">
+        <div class="container-fluid">
+            <img class="img-fluid" alt="Responsive image"src="images/logo.png"><img style="width:10vh"src="images/Crab.png">
             <br><br><br>
-            <table class="table" >
+            <table class="table table-hover" >
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">username</th>
-                    <th scope="col">punteggio</th>
+                    <th scope="col"><img class="img-fluid" alt="Responsive image"style="width:120px"src="images/P.png"><img class="img-fluid" alt="Responsive image"src="images/trophy.png"></th>
+                    <th scope="col"><img class="img-fluid" alt="Responsive image"style="width:120px"src="images/User.png"><img class="img-fluid" alt="Responsive image"src="images/UserIcona.png"></th>
+                    <th scope="col"><img class="img-fluid" alt="Responsive image"style="width:90px"src="images/Score.png"><img style="width:24px"class="img-fluid" alt="Responsive image"src="images/star.png"></th>
                   </tr>
                 </thead>
                 <tbody id="tBody">
                 </tbody>
               </table>
             <br><br>
-            <span id="gioca" type="button"class='start-btn'>Indietro<!--img style="height:45px"src="images/start.png"--></span>
+            <span id="gioca" type="button"class='start-btn'><img class="img-fluid" alt="Responsive image"style="height:45px"src="images/Back.png"></span>
             
         </div>
     

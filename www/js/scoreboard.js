@@ -18,4 +18,8 @@ $(()=>{
     $("#gioca").on("click", function(){
         window.location.href='index.html'
     })
+
+    $("#classifica").click(function(){
+        window.location.href='scoreboard.html'
+    })
 })
