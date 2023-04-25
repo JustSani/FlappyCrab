@@ -32,11 +32,13 @@ h1{
     width: 45vh;
     -webkit-clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 100%);
     clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 54px),calc(100% - 30px) 100%,15px 100%,0 100%);
+    border: 3px solid white;
 }
 #classifica{
     width: 45vh;
     -webkit-clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,15px 100%,0 100%);
     clip-path: polygon(0 0,0 0,100% 0,100% 0,100% calc(100% - 54px),calc(100% - 30px) 100%,15px 100%,0 100%);
+    border: 3px solid white;
 }
   body {
     font-family: 'Press Start 2p';
