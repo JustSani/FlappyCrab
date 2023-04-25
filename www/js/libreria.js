@@ -22,7 +22,6 @@ function sendRequestNoCallback(url,method,parameters){
 		data: parameters,
 		timeout: 5000
 	});
-	e.preventDefault();
 }
 
 function error(jqXHR, testStatus, strError) {

@@ -15,12 +15,14 @@ var ctx = cvs.getContext("2d");
 var bird = new Image();  
 var bg = new Image();  
 var fg = new Image();  
+var fg1 = new Image();  
 var pipeNorth = new Image();  
 var pipeSouth = new Image();  
   
 bird.src = "images/crab.png"; 
-bg.src = "images/bg.png";  
+bg.src = "images/water_backlground.jpg";  
 fg.src = "images/fg.png";  
+fg1.src = "images/fg2.png";  
 pipeNorth.src = "images/pipeNorth.png";  
 pipeSouth.src = "images/pipeSouth.png";  
   
@@ -50,8 +52,9 @@ pipe[0] = {
     x : cvs.width,  
     y : 0  
 };  
-  
+
 function draw(){  
+
     ctx.drawImage(bg,0,0);  
       
     for(var i = 0; i < pipe.length; i++){  
@@ -71,6 +74,7 @@ function draw(){
           
         if( bX + bird.width >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width && (bY <= pipe[i].y + pipeNorth.height || bY+bird.height >= pipe[i].y+constant) || bY + bird.height >=  cvs.height - fg.height){ 
             location.reload();
+            // morte
         }  
           
         if(pipe[i].x == 5){  
@@ -80,8 +84,12 @@ function draw(){
           
           
     }  
-  
+    ctx.drawImage(fg1,0,cvs.height - fg.height + 20);  
+
     ctx.drawImage(fg,0,cvs.height - fg.height);  
+    
+    
+    
       
     ctx.drawImage(bird,bX,bY);  
       
@@ -89,7 +97,7 @@ function draw(){
       
     ctx.fillStyle = "#000";  
     ctx.font = "20px Verdana";  
-    ctx.fillText("Score : "+score,10,cvs.height-20);  
+    ctx.fillText("Score : "+score,10, 0);  
     
       
     requestAnimationFrame(draw);  
