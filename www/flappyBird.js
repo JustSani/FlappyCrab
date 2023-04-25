@@ -9,6 +9,7 @@ s.src = "sounds/sound.mp3";
 fly.src = "sounds/fly.mp3";  
 scor.src = "sounds/score.mp3"; 
 
+let death = false;
 
 var ctx = cvs.getContext("2d");  
  
@@ -20,7 +21,7 @@ var pipeNorth = new Image();
 var pipeSouth = new Image();  
   
 bird.src = "images/crab.png"; 
-bg.src = "images/water_backlground.jpg";  
+bg.src = "images/bg.png";  
 fg.src = "images/fg.png";  
 fg1.src = "images/fg2.png";  
 pipeNorth.src = "images/pipeNorth.png";  
@@ -41,7 +42,7 @@ var score = 0;
 document.addEventListener("click",moveUp);  
   
 function moveUp(){  
-    bY -= 30;  
+    bY -= 30;
     fly.play();  
     s.play();  
 }  
@@ -55,8 +56,9 @@ pipe[0] = {
 
 function draw(){  
 
+     //cvs.height - fg.height);  
+
     ctx.drawImage(bg,0,0);  
-      
     for(var i = 0; i < pipe.length; i++){  
           
         constant = pipeNorth.height+gap;  
@@ -73,8 +75,10 @@ function draw(){
         }  
           
         if( bX + bird.width >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width && (bY <= pipe[i].y + pipeNorth.height || bY+bird.height >= pipe[i].y+constant) || bY + bird.height >=  cvs.height - fg.height){ 
-            location.reload();
+            //location.reload();
+            death = true;
             // morte
+
         }  
           
         if(pipe[i].x == 5){  
@@ -84,9 +88,9 @@ function draw(){
           
           
     }  
-    ctx.drawImage(fg1,0,cvs.height - fg.height + 20);  
+    ctx.drawImage(fg,0,0) 
+    //ctx.drawImage(fg1,0,cvs.height - fg.height + 20);  
 
-    ctx.drawImage(fg,0,cvs.height - fg.height);  
     
     
     
@@ -99,8 +103,8 @@ function draw(){
     ctx.font = "20px Verdana";  
     ctx.fillText("Score : "+score,10, 0);  
     
-      
-    requestAnimationFrame(draw);  
+    if(!death)
+        requestAnimationFrame(draw);  
       
 }  
   
