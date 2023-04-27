@@ -3,85 +3,73 @@
 <head>
     <link href="lib/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+      form {
+          background-color: #fcd0a1;
+          border-radius: 10px;
+          padding: 20px;
+          width: 300px;
+          margin: 50px auto;
+        }
+        
+        
+        .infos[type="text"], input[type="text"] {
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          border-radius: 5px;
+          border: none;
+          margin-bottom: 20px;
+        }
+        svg{
+          width: 15vw;
+          margin-right: 3vw;
+        }
+        img{
+          margin-top: 3vh;
+        }
+  
+        
+        
+  </style>
 </head>
 
 <body style="background-image: url('images/bg_large.jpg');">
-<style>
-    form {
-        background-color: #fcd0a1;
-        border-radius: 10px;
-        padding: 20px;
-        width: 300px;
-        margin: 50px auto;
-      }
-      
-      label {
-        display: block;
-        margin-bottom: 10px;
-        font-size: 18px;
-        font-weight: bold;
-        color: #de5959;
-      }
-      
-      .infos[type="text"], input[type="email"] {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 5px;
-        border: none;
-        margin-bottom: 20px;
-      }
-      
-      button {
-        background-color: #de5959;
-        color: white;
-        font-size: 18px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-right: 10px;
-      }
-      
-      button:hover {
-        background-color: #b54141;
-      }
-      
-      #limpar {
-        background-color: #fcb13e;
-        color: white;
-        font-size: 18px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      
-      #limpar:hover {
-        background-color: #c78d35;
-      }
+  <img class="img-fluid" alt="Responsive image"src="images/fg.png" style="width: 100%;">
 
-      
-      
-</style>
     <div class="container-fluid">
-        
+      
+      
+      <center>
+        <input type="text" id="username" placeholder="Username" >
+        <span id="load" type="button" class='ourButton'>Salva</span>
+      </center>
+  </div>
 
-        <form class="form">
-            <img class="img-fluid" alt="Responsive image" src="images/logo.png">
-            <div class="mario"></div>
-            <label for="email">Username</label>
-            <input type="email" id="email" name="email"><img style="width:50px;float:right"class="img-fluid" alt="Responsive image"src="images/Crab3.png">
-
-            <button type="submit">Ok</button>
-            <!--<button type="reset" id="limpar">Clear</button>-->
-
-        </form>
-    </div>
     <script src="lib/jquery-3.6.4.js"></script>
     <script src="lib/bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/index.js"></script>
-
+    <script>
+      $(document).ready(function() {
+        $("#load").on("click", function(){
+          if($("#username").val() == ""){
+            $("#load").text("")
+            $("#load").append("<svg xmlns='http://www.w3.org/2000/svg'  fill='currentColor' class='bi bi-x-lg' viewBox='0 0 16 16'><path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z'/></svg>")
+            
+            setTimeout(function(){
+              $("#load").text("Salva")
+            }, 2000)
+          }else{
+            localStorage.setItem("username",$("#username").val() )
+            localStorage.setItem('audio', true);
+            localStorage.setItem('skin', false);
+            
+            window.location.href="index.html"
+          }
+        })
+      })
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <link href="lib/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" >
+        <link href="css/index.css" rel="stylesheet">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <script src="lib/jquery-3.6.4.js" ></script>
+        <script src="lib/bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js" ></script>
+        <style>
+            input{
+                height: 4vh;
+                font-size: 4vh;
+                max-width: 70vw;
+                padding: 25px;
+                border-radius: 10px 10px 10px 10px;
+                border: 3px solid black;
+            }
+            svg{
+                width: 15vw;
+                margin-right: 3vw;
+            }
+        </style>
+    </head>
+    <body style="background-image: url('images/bg_large.jpg');">
+        
+        <div class="container-fluid" >
+            <img class="img-fluid" alt="Responsive image"src="images/fg.png" style="width: 100%">
+            
+            <center>
+                <br>
+                <span id="game" type="button"class='ourButton'><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                  </svg>Play</span>
+                <br>
+                <span id="home" type="button"class='ourButton'><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+                  </svg>Home</span>
+                <br>
+            </center>
+        </div>
+    <script src="js/libreria.js"></script>
+    <script>
+        $(document).ready(function(){
+            let enable = false;
+
+            let invia = sendRequestNoCallback("https://sanino.altervista.org/FlappyCrab/insertPoints.php?username="+localStorage.getItem("username")+"&punteggio=" + localStorage.getItem("punteggio"), "GET", "");
+            invia.done(function(){
+                enable = true
+            })
+            invia.fail(function(err){
+                console.log(err.responseText)
+                if(err.responseText == "done")
+                enable = true
+            })
+            
+            $("#game").on("click", function(){
+                if(enable)
+                window.location.href="game.html";
+            })
+            $("#home").on("click", function(){
+                if(enable)
+                window.location.href="index.html"
+            })
+        })
+    </script>
+    
+        
+    </body>
+</html>
+
+	
+

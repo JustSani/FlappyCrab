@@ -19,6 +19,7 @@ var fg = new Image();
 var fg1 = new Image();  
 var pipeNorth = new Image();  
 var pipeSouth = new Image();  
+var seaweed = new Image();  
   
 bird.src = "images/Crab.png"; 
 bg.src = "images/bg.png";  
@@ -26,7 +27,9 @@ fg.src = "images/fg.png";
 fg1.src = "images/fg2.png";  
 pipeNorth.src = "images/pipeNorth.png";  
 pipeSouth.src = "images/pipeSouth.png";  
-  
+seaweed.src= "images/seaweed.gif"
+
+
 var gap = 205;  
 var constant;  
   
@@ -37,11 +40,14 @@ var gravity = 0.7;
   
 var score = 0;  
   
+let max = 0;
 
 function moveUp(){  
     bY -= 30;
-    fly.play();  
-    s.play();  
+    if(localStorage.getItem('audio') == "true"){
+        fly.play();  
+        s.play();  
+    }
 }  
   
 var pipe = [];  
@@ -53,7 +59,16 @@ pipe[0] = {
 
 $(document).ready(function(){
     document.addEventListener("click",moveUp);  
-  
+    let getMyDat = sendRequestNoCallback("https://sanino.altervista.org/FlappyCrab/getMyInfo.php?username="+localStorage.getItem("username"),"GET", "")
+    getMyDat.done(function(serverdata){
+        console.log(serverdata)
+        max=serverdata.top
+
+    })
+    getMyDat.fail(function(serverdata){
+        console.log(serverdata)
+    })
+    
     draw();
    
 })
@@ -63,6 +78,7 @@ $(document).ready(function(){
 function draw(){  
 
     //cvs.height - fg.height);  
+
 
    ctx.drawImage(bg,0,0);  
    for(var i = 0; i < pipe.length; i++){  
@@ -83,20 +99,24 @@ function draw(){
        if( bX + bird.width >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width && (bY <= pipe[i].y + pipeNorth.height || bY+bird.height >= pipe[i].y+constant) || bY + bird.height >=  cvs.height - fg.height){ 
            //location.reload();
            death = true;
+           localStorage.setItem("punteggio",score);
            // morte
            navigator.vibrate(3000)
+
+           window.location.href='gameover.html'
 
 
        }  
          
        if(pipe[i].x == 5){  
            score++;  
+           if(localStorage.getItem('audio') == "true")
            scor.play();  
        }  
          
          
    }  
-   ctx.drawImage(fg,0,0) 
+   //ctx.drawImage(fg,0,0) 
    //ctx.drawImage(fg1,0,cvs.height - fg.height + 20);  
 
    
@@ -107,9 +127,14 @@ function draw(){
      
    bY += gravity;  
      
-   ctx.fillStyle = "#000";  
-   ctx.font = "20px Verdana";  
-   ctx.fillText("Score : "+score,10, 0);  
+   ctx.fillStyle = "#fff";  
+   ctx.font = "20px font bold";  
+   ctx.fillText("Max : "+max,cvs.width - 110, 30);  
+   
+   ctx.fillText("Score : "+score,cvs.width - 110, 60);  
+  
+   ctx.fillText(localStorage.getItem("username"),10, 30);  
+   
    
    if(!death)
        requestAnimationFrame(draw);  

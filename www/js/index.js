@@ -9,6 +9,9 @@ $(document).ready(function(){
     $("#classifica").click(function(){
         window.location.href='scoreboard.html'
     })
+    $("#option").click(function(){
+        window.location.href="options.html"
+    })
 })
     
 
