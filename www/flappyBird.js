@@ -20,8 +20,23 @@ var fg1 = new Image();
 var pipeNorth = new Image();  
 var pipeSouth = new Image();  
 var seaweed = new Image();  
-  
-bird.src = "images/Crab.png"; 
+
+
+let skinSize = 0
+
+if(localStorage.getItem('secret') == "true"){
+    bird.src = "images/CrabChan.png"; 
+    skinSize = 70
+}
+else if(localStorage.getItem('skin') == "true"){
+    bird.src = "images/Crab.png"; 
+    skinSize = 50
+}
+else{
+    skinSize  = 38
+    bird.src = "images/Crab1.png";
+}
+
 bg.src = "images/bg.png";  
 fg.src = "images/fg.png";  
 fg1.src = "images/fg2.png";  
@@ -41,6 +56,7 @@ var gravity = 0.7;
 var score = 0;  
   
 let max = 0;
+
 
 function moveUp(){  
     bY -= 30;
@@ -96,7 +112,7 @@ function draw(){
            });   
        }  
          
-       if( bX + bird.width >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width && (bY <= pipe[i].y + pipeNorth.height || bY+bird.height >= pipe[i].y+constant) || bY + bird.height >=  cvs.height - fg.height){ 
+       if( bX + skinSize >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width && (bY <= pipe[i].y + pipeNorth.height || bY+skinSize >= pipe[i].y+constant) || bY + skinSize >=  cvs.height - fg.height){ 
            //location.reload();
            death = true;
            localStorage.setItem("punteggio",score);
@@ -123,7 +139,7 @@ function draw(){
    
    
      
-   ctx.drawImage(bird,bX,bY);  
+   ctx.drawImage(bird,bX,bY, skinSize, skinSize);  
      
    bY += gravity;  
      
