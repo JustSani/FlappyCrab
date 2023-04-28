@@ -28,9 +28,18 @@
         }
         img{
           margin-top: 3vh;
+          position: absolute;
         }
-  
-        
+        .center{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh; 
+        }
+        input{
+          
+
+        }
         
   </style>
 </head>
@@ -38,11 +47,11 @@
 <body style="background-image: url('images/bg_large.jpg');">
   <img class="img-fluid" alt="Responsive image"src="images/fg.png" style="width: 100%;">
 
-    <div class="container-fluid">
+    <div class="center">
       
       
       <center>
-        <input type="text" id="username" placeholder="Username" >
+        <input type="text" id="username" style="width: 70vw; font-family: 'Courier New', Courier, monospace;" placeholder="Username" >
         <span id="load" type="button" class='ourButton'>Salva</span>
       </center>
   </div>

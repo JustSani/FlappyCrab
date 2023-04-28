@@ -9,7 +9,11 @@ $(()=>{
             if(i <= 5){
                 let tr = $("<tr>");
                 tr.append($("<th>").attr("scope", "row").text(i))
-                tr.append($("<td>").text(element.username))
+                if(element.username.length <= 8)
+                    tr.append($("<td>").text(element.username))
+                else
+                    tr.append($("<td>").text(element.username[0] + element.username[1] + element.username[2] + element.username[3] + element.username[4] + element.username[5] + element.username[6] + element.username[7] + ".."))
+
                 tr.append($("<td>").text(element.top))
                 i++;
                 $("#tBody").append(tr)
