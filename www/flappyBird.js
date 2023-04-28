@@ -116,7 +116,7 @@ function draw(){
            });   
        }  
          
-       if( bX + skinSize >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width && (bY <= pipe[i].y + pipeNorth.height || bY+skinSize >= pipe[i].y+constant) || bY + skinSize >=  cvs.height - fg.height){ 
+       if( bX + skinSize >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width && (bY <= pipe[i].y + pipeNorth.height || bY+skinSize >= pipe[i].y+constant) || bY + skinSize >=  cvs.height){ 
            //location.reload();
            death = true;
            localStorage.setItem("punteggio",score);
@@ -153,6 +153,7 @@ function draw(){
    
    ctx.fillText("Score : "+score,cvs.width - 110, 60);  
   
+   
    ctx.fillText(localStorage.getItem("username"),10, 30);  
    
    
