@@ -22,6 +22,10 @@ var pipeSouth = new Image();
 var seaweed = new Image();  
 
 
+var gravity = 0.7;  
+
+
+
 let skinSize = 0
 
 if(localStorage.getItem('secret') == "true"){
@@ -31,6 +35,7 @@ if(localStorage.getItem('secret') == "true"){
 else if(localStorage.getItem('skin') == "true"){
     bird.src = "images/Crab.png"; 
     skinSize = 50
+    gravity = 1.2
 }
 else{
     skinSize  = 38
@@ -51,7 +56,6 @@ var constant;
 var bX = 10;  
 var bY = 150;  
   
-var gravity = 0.7;  
   
 var score = 0;  
   
